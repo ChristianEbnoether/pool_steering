@@ -12,34 +12,15 @@ from influxdb import InfluxDBClient
 import subprocess
 
 #
-# Relaisboard
-##############
-PUMP_gpio = 21 # pin 40 gpio 21 Gr�n
-LAMP_gpio = 20 # pin 38 gpio 20 Gelb
-contact1_gpio = 16 # pin 36 gpio 16 orange
-contact2_gpio = 12 # pin 32 gpio 12 rot 
+# Relaisboard/gpio
+###################
 
-#
-# Taster
-##############
+contact1_gpio = 1 # 
+contact2_gpio = 2 # 
+contact3_gpio = 3 #
+contact4_gpio = 4 # 
+5_gpio = 5 #waterfühler
 
-taster_mitte_gelb = 10 # pin 19 gpio 10
-taster_mitte_blau = 15 # pin 10 gpio 15
-
-taster_unten_orange = 6 #pin 31 gpio 6
-taster_unten_grun = 5 #pin 29 gpio 5
-
-
-
-dev_path = '/sys/bus/w1/devices/'
-dev_Dach = glob.glob(dev_path + '28-0316611d8bff')[0]
-dev_Vorlauf = glob.glob(dev_path + '28-031660882fff')[0]
-dev_Nachlauf = glob.glob(dev_path + '28-04166127baff')[0]
-dev_Luft = glob.glob(dev_path + '28-031660c2f9ff')[0]
-Luft = dev_Luft + '/w1_slave'
-Dach = dev_Dach + '/w1_slave'
-Vorlauf = dev_Vorlauf + '/w1_slave'
-Nachlauf = dev_Nachlauf + '/w1_slave'
 host = '192.168.1.10'
 port = 8086
 user = []
