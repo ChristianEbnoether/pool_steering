@@ -36,51 +36,19 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 count_work=0
-count_dont=0
-temp_Soll=2
-
-
-GPIO.setwarnings(False) # Ignore warning for now
-GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) # Set pin 10 to be an input pin and set initial value to be pulled low (off)
 
 #print(count_work)
 def get_temp():
-    global count_dont
     global count_work
-   #print(count_work)
-    #print(count_dont)
-    
-    temp_Dach=0
-    temp_Luft=0
-    temp_Nachlauf=0
-    temp_Vorlauf=0
+
 
     for t in range(1):
         tempfile_Vorlauf = open(Vorlauf)
-        tempfile_Nachlauf = open(Nachlauf)
-        tempfile_Dach = open(Dach)
-        tempfile_Luft = open(Luft)
-        text_Vorlauf = tempfile_Vorlauf.read() 
-        text_Nachlauf = tempfile_Nachlauf.read() 
-        text_Dach = tempfile_Dach.read() 
-        text_Luft = tempfile_Luft.read() 
-        tempfile_Luft.close() 
+        text_Vorlauf = tempfile_Vorlauf.read()
         tempfile_Vorlauf.close() 
-        tempfile_Nachlauf.close() 
-        tempfile_Dach.close() 
-        tline_Luft = text_Luft.split("\n")[1] # the second line contains temperature
         tline_Vorlauf = text_Vorlauf.split("\n")[1] # the second line contains temperature
-        tline_Nachlauf = text_Nachlauf.split("\n")[1] # the second line contains temperature
-        tline_Dach = text_Dach.split("\n")[1] # the second line contains temperature
-        tdata_Luft = tline_Luft.split(" ")[9] # position 9 contains temparature value
         tdata_Vorlauf = tline_Vorlauf.split(" ")[9] # position 9 contains temparature value
-        tdata_Nachlauf = tline_Nachlauf.split(" ")[9] # position 9 contains temparature value
-        tdata_Dach = tline_Dach.split(" ")[9] # position 9 contains temparature value
-        temp_Dach  += float(tdata_Dach[2:])/1000
         temp_Vorlauf  += float(tdata_Vorlauf[2:])/1000
-        temp_Nachlauf  += float(tdata_Nachlauf[2:])/1000
-        temp_Luft  += float(tdata_Luft[2:])/1000
-        temp_Delta=temp_Dach-temp_Vorlauf
    
 
         if (temp_Dach-temp_Vorlauf > temp_Soll):
