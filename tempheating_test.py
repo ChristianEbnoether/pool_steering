@@ -18,8 +18,6 @@ PUMP_gpio = 21 # pin 40 gpio 21 Gr�n
 LAMP_gpio = 20 # pin 38 gpio 20 Gelb
 contact1_gpio = 16 # pin 36 gpio 16 orange
 contact2_gpio = 12 # pin 32 gpio 12 rot 
-PUMP_gpio = 12
-
 
 #
 # Taster
