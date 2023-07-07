@@ -140,7 +140,7 @@ def clear_counter():
 
 while True:
     datapoints=get_temp()
-    bResult=client.write_points(datapoints)
+#    bResult=client.write_points(datapoints)
     try:
         client.write_points(datapoints)
     except Exception as exc:
