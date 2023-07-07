@@ -143,26 +143,9 @@ while True:
     datapoints=get_temp()
     bResult=client.write_points(datapoints)
     try:
-        g_client.write_points(datapoints)
-        points_written += len(write_points)
-    except InfluxDBServerError as svr_exc:
-        LOG.error(
-            "InfluxDBServerError: %s\nFailed to write points: %s",
-            str(svr_exc),
-            _get_point_names(write_points),
-        )
-    except InfluxDBClientError as client_exc:
-        LOG.error(
-            "InfluxDBClientError writing points: %s\n" "Error: %s",
-            _get_point_names(write_points),
-            str(client_exc),
-        )
-    except requests.exceptions.ConnectionError as req_exc:
-        LOG.error(
-            "ConnectionError exception caught writing points: %s\n" "Error: %s",
-            _get_point_names(write_points),
-            str(req_exc),
-        )
+        client.write_points(datapoints)
+    except Exception as exc:
+        print(exc)
     #time.sleep(10)
 #    clear_counter()
     # Create Influxdb datapoints (using lineprotocol as of Influxdb >1.1)
