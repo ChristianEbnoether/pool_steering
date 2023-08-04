@@ -13,3 +13,5 @@ sudo apt install python3-pip
 for ph readout on BLE-YC01
 
 pip install bleak
+pip install decodeInt
+
